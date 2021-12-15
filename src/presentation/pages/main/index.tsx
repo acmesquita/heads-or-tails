@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.scss'
 import tails from '@/presentation/assets/brasao.png'
 import heads from '@/presentation/assets/busto.png'
+import { LaunchCoinRandomly } from '@/domain/usecases'
+import { Result } from '@/domain/models'
 
-const Main: React.FC = () => {
+type Params = {
+  launchCoinRandomly: LaunchCoinRandomly
+}
+
+const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
+  const [face, setFace] = useState('')
+
+  useEffect(() => {
+    setFace(
+      launchCoinRandomly.launch()
+    )
+  }, [])
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.coin}>
-        <span className={styles.heads}>
-          <img src={tails} alt="" />
-        </span>
+        <img src={face === Result.Heads ? heads : tails } alt="" data-testid="img" data-value={face} />
       </div>
     </div>
   )

@@ -6,6 +6,6 @@ describe('LocalLaunchCoinRandomly', () => {
     const sut = new LocalLaunchCoinRandomly()
     const result = sut.launch()
 
-    expect(Result[result]).toBeTruthy()
+    expect([Result.Heads, Result.Tails].includes(result)).toBeTruthy()
   })
 })

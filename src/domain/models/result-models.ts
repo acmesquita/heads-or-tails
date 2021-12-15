@@ -1,4 +1,4 @@
 export enum Result {
-  Heads,
-  Tails
+  Heads = 'heads',
+  Tails = 'tails'
 }
