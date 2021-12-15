@@ -12,25 +12,17 @@
     "jsx": "react",
     "rootDirs": [
       "src",
-      "tests"
     ],
     "baseUrl": "src",
     "paths": {
       "@/*": [
         "*"
       ],
-      "@/tests/*": [
-        "../tests/*"
-      ]
     },
     "allowJs": true,
     "resolveJsonModule": true,
   },
   "include": [
     "src",
-    "tests"
   ],
-  "exclude": [
-    "src/main/test/cypress"
-  ]
 }

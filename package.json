@@ -5,20 +5,17 @@
   "author": "Catharina Mesquita <catha.ana.1994@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "start": "node index",
-    "build": "webpack --config webpack.prod.js",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --passWithNoTests --no-cache --runInBand",
+    "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "yarn test --watch",
     "test:staged": "yarn test --findRelatedTests",
     "test:ci": "yarn test --coverage",
-    "test:cypress": "cypress open",
     "npm:check": "npx npm-check -u -s",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.3",
     "@types/node": "^16.11.13",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "eslint": "^8.4.1",
@@ -29,7 +26,9 @@
     "eslint-plugin-standard": "^5.0.0",
     "git-commit-msg-linter": "^3.2.8",
     "husky": "^7.0.4",
+    "jest": "^27.4.5",
     "lint-staged": "^12.1.2",
+    "ts-jest": "^27.1.1",
     "typescript": "^4.5.4"
   }
 }
