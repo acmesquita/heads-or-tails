@@ -3,7 +3,8 @@ import { Result } from '@/domain/models'
 
 class LocalLaunchCoinRandomly implements LaunchCoinRandomly {
   launch (): Result {
-    return Math.random() < 0.5 ? Result.Heads : Result.Tails
+    const random_fifty_per_cent = Math.random() < 0.5
+    return random_fifty_per_cent ? Result.Heads : Result.Tails
   }
 }
 
