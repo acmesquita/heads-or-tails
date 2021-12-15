@@ -8,7 +8,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: [],
   testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
+    '<rootDir>/node_modules/'
   ],
   testEnvironment: 'jsdom',
   transform: {
