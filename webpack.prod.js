@@ -21,6 +21,13 @@ module.exports = merge(common, {
           { loader: 'sass-loader' }
         ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpe?g|gif|jp2|webp)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]'
+        }
       }
     ]
   },

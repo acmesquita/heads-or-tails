@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import '@/presentation/styles/global.scss'
+import { Main } from '@/presentation/pages'
+
 ReactDOM.render(
-  <h1>Hello World</h1>,
+  <Main />,
   document.getElementById('main')
 )
