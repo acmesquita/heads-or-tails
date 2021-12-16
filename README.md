@@ -4,4 +4,5 @@ System to flips the coin.
 
 ## Usecases
 
-1. Flips the coin
+- [x] Flips the coin when intilize
+- [x] Flips the coin when click in button retry
