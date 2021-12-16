@@ -13,7 +13,7 @@
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "yarn test --watch",
     "test:staged": "yarn test --findRelatedTests",
-    "test:ci": "yarn test --coverage",
+    "test:ci": "yarn test --coverage --silent",
     "npm:check": "npx npm-check -u -s",
     "prepare": "husky install"
   },

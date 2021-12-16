@@ -22,11 +22,7 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
     setShow(false)
     setTimeout(() => {
       setFace(launchCoinRandomly.launch())
-      if (!classAnitmate) {
-        setClassAnitmate(styles.animation)
-      } else {
-        setClassAnitmate('')
-      }
+      setClassAnitmate(styles.animation)
       setTimeout(() => {
         setShow(true)
         setClassAnitmate('')
@@ -43,7 +39,6 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
           data-value={face}
           alt="coin"
           data-testid="img"
-          onAnimationStart={() => true}
         />
       </div>
       <button className={styles.btnFlip} title='Retry' onClick={flipCoin} data-testid="btn-retry"></button>
