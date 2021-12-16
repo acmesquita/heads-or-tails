@@ -11,6 +11,7 @@ type Params = {
 
 const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
   const [face, setFace] = useState('')
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     setFace(
@@ -18,10 +19,22 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
     )
   }, [])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true)
+    }, 2500)
+  }, [])
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.coin}>
-        <img src={face === Result.Heads ? heads : tails } alt="" data-testid="img" data-value={face} />
+        <img
+          src={face === Result.Heads ? heads : tails }
+          className={show ? styles.show : styles.hide}
+          data-value={face}
+          alt="coin"
+          data-testid="img"
+        />
       </div>
     </div>
   )
