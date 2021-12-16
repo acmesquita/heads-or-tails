@@ -13,10 +13,22 @@ class LaunchCoinRandomlyMock implements LaunchCoinRandomly {
   }
 }
 
+type SutTypes = {
+  launchCoinRandomlyMock: LaunchCoinRandomlyMock
+}
+
+const makeSut = (): SutTypes => {
+  const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
+  render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
+
+  return {
+    launchCoinRandomlyMock
+  }
+}
+
 describe('Main page', () => {
   test('Should be start with face defined', () => {
-    const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
-    render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
+    makeSut()
 
     expect(screen.getByTestId('img')).toHaveAttribute('data-value', Result.Heads)
     expect(screen.getByTestId('img').className).toMatch('hide')
@@ -28,14 +40,13 @@ describe('Main page', () => {
   })
 
   test('Should be retry when click in button', () => {
-    const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
-    render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
+    const { launchCoinRandomlyMock } = makeSut()
 
     expect(launchCoinRandomlyMock.callsCount).toBe(1)
 
     fireEvent.click(screen.getByTestId('btn-retry'))
-
     waitFor(() => screen.getByTestId('img'))
+
     expect(launchCoinRandomlyMock.callsCount).toBe(2)
   })
 })
