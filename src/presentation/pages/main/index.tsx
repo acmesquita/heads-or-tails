@@ -36,6 +36,7 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
           data-testid="img"
         />
       </div>
+      <button className={styles.btnFlip} title='Retry'></button>
     </div>
   )
 }
