@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import '@/presentation/styles/global.scss'
+import Router from '@/main/routes'
 
 ReactDOM.render(
-  <h1></h1>,
+  <Router />,
   document.getElementById('main')
 )
