@@ -12,34 +12,38 @@ type Params = {
 const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
   const [face, setFace] = useState('')
   const [show, setShow] = useState(false)
+  const [classAnitmate, setClassAnitmate] = useState('')
 
   useEffect(() => {
-    setFace(
-      launchCoinRandomly.launch()
-    )
-  }, [])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true)
-    }, 2100)
+    flipCoin()
   }, [])
 
   function flipCoin (): void {
-    setFace(
-      launchCoinRandomly.launch()
-    )
+    setShow(false)
+    setTimeout(() => {
+      setFace(launchCoinRandomly.launch())
+      if (!classAnitmate) {
+        setClassAnitmate(styles.animation)
+      } else {
+        setClassAnitmate('')
+      }
+      setTimeout(() => {
+        setShow(true)
+        setClassAnitmate('')
+      }, 2100)
+    }, 200)
   }
 
   return (
-    <div className={styles.mainWrapper}>
-      <div className={`${styles.coin} ${styles.animation}`} data-testid="coin">
+    <div className={styles.mainWrapper} data-testid="main">
+      <div className={`${styles.coin} ${classAnitmate}`} data-testid="coin">
         <img
           src={face === Result.Heads ? heads : tails }
           className={show ? styles.show : styles.hide}
           data-value={face}
           alt="coin"
           data-testid="img"
+          onAnimationStart={() => true}
         />
       </div>
       <button className={styles.btnFlip} title='Retry' onClick={flipCoin} data-testid="btn-retry"></button>
