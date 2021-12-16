@@ -15,14 +15,16 @@
     align-items: center;
     justify-content: center;
   
-    animation: rotation 2s 1 linear;
-  
     img {
       width: 175px;
       height: 175px;
   
       transition: all 0.2s ease-in;
     }
+  }
+
+  .animation {
+    animation: rotation 2s 1 linear;
   }
 
   .btnFlip {

@@ -33,7 +33,7 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
 
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.coin}>
+      <div className={`${styles.coin} ${styles.animation}`} data-testid="coin">
         <img
           src={face === Result.Heads ? heads : tails }
           className={show ? styles.show : styles.hide}
