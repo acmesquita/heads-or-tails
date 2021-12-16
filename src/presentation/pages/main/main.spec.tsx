@@ -19,5 +19,11 @@ describe('Main page', () => {
     render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
 
     expect(screen.getByTestId('img')).toHaveAttribute('data-value', Result.Heads)
+    expect(screen.getByTestId('img').className).toMatch('hide')
+    jest.useFakeTimers()
+    jest.runAllTimers()
+    setTimeout(() => {
+      expect(screen.getByTestId('img').className).toMatch('show')
+    }, 2500)
   })
 })
