@@ -22,8 +22,14 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
   useEffect(() => {
     setTimeout(() => {
       setShow(true)
-    }, 2500)
+    }, 2100)
   }, [])
+
+  function flipCoin (): void {
+    setFace(
+      launchCoinRandomly.launch()
+    )
+  }
 
   return (
     <div className={styles.mainWrapper}>
@@ -36,7 +42,7 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
           data-testid="img"
         />
       </div>
-      <button className={styles.btnFlip} title='Retry'></button>
+      <button className={styles.btnFlip} title='Retry' onClick={flipCoin} data-testid="btn-retry"></button>
     </div>
   )
 }

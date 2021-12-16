@@ -1,13 +1,14 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import Main from '.'
 import { Result } from '@/domain/models'
 import { LaunchCoinRandomly } from '@/domain/usecases'
 
 class LaunchCoinRandomlyMock implements LaunchCoinRandomly {
-  output: Result
-
+  output = Result.Heads
+  callsCount = 0
   launch (): Result {
+    this.callsCount++
     return this.output
   }
 }
@@ -15,7 +16,6 @@ class LaunchCoinRandomlyMock implements LaunchCoinRandomly {
 describe('Main page', () => {
   test('Should be start with face defined', () => {
     const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
-    launchCoinRandomlyMock.output = Result.Heads
     render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
 
     expect(screen.getByTestId('img')).toHaveAttribute('data-value', Result.Heads)
@@ -24,6 +24,18 @@ describe('Main page', () => {
     jest.runAllTimers()
     setTimeout(() => {
       expect(screen.getByTestId('img').className).toMatch('show')
-    }, 2500)
+    }, 2100)
+  })
+
+  test('Should be retry when click in button', () => {
+    const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
+    render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
+
+    expect(launchCoinRandomlyMock.callsCount).toBe(1)
+
+    fireEvent.click(screen.getByTestId('btn-retry'))
+
+    waitFor(() => screen.getByTestId('img'))
+    expect(launchCoinRandomlyMock.callsCount).toBe(2)
   })
 })
