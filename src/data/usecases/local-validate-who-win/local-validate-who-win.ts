@@ -8,6 +8,10 @@ export class LocalValidateWhoWin implements ValidateWhoWin {
       throw new InvalidParamsError()
     }
 
+    if (player1.coinFace === player2.coinFace) {
+      throw new InvalidParamsError()
+    }
+
     return [player1, player2].find(player => player.coinFace === faceResult)
   }
 }
