@@ -36,4 +36,20 @@ describe('LocalValidateWhoWin', () => {
 
     expect(() => sut.validate(player1, player2, null)).toThrowError(new InvalidParamsError())
   })
+
+  test('Should validate who player choice coin face equal to faceResult', () => {
+    const sut = makeSut()
+    const player1: Player = {
+      name: 'any_name',
+      coinFace: Result.Heads
+    }
+    const player2: Player = {
+      name: 'any_name',
+      coinFace: Result.Tails
+    }
+
+    const playerResult = sut.validate(player1, player2, Result.Tails)
+
+    expect(playerResult).toEqual(player2)
+  })
 })
