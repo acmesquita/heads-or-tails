@@ -1,9 +1,9 @@
 import { InvalidParamsError } from '@/domain/errors'
-import { Player } from '@/domain/models'
+import { Player, Result } from '@/domain/models'
 
 export class LocalValidateWhoWin {
-  validate (player1: Player, player2: Player): void {
-    if (!player1 || !player2) {
+  validate (player1: Player, player2: Player, faceResult: Result): void {
+    if (!player1 || !player2 || !faceResult) {
       throw new InvalidParamsError()
     }
   }
