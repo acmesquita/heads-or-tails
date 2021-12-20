@@ -1,10 +1,10 @@
 import React from 'react'
 import { Main } from '@/presentation/pages'
-import { LocalLaunchCoinRandomly } from '@/data/usecases'
+import { LocalFlipCoinRandomly } from '@/data/usecases'
 
 export const MakeMain: React.FC = () => {
-  const localLaunchCoinRandomly = new LocalLaunchCoinRandomly()
+  const localFlipCoinRandomly = new LocalFlipCoinRandomly()
   return (
-    <Main launchCoinRandomly={localLaunchCoinRandomly}/>
+    <Main flipCoinRandomly={localFlipCoinRandomly}/>
   )
 }

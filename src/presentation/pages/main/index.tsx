@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles.scss'
 import tails from '@/presentation/assets/brasao.png'
 import heads from '@/presentation/assets/busto.png'
-import { LaunchCoinRandomly } from '@/domain/usecases'
+import { FlipCoinRandomly } from '@/domain/usecases'
 import { Result } from '@/domain/models'
 
 type Params = {
-  launchCoinRandomly: LaunchCoinRandomly
+  flipCoinRandomly: FlipCoinRandomly
 }
 
-const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
+const Main: React.FC<Params> = ({ flipCoinRandomly }: Params) => {
   const [face, setFace] = useState('')
   const [show, setShow] = useState(false)
   const [classAnitmate, setClassAnitmate] = useState('')
@@ -21,7 +21,7 @@ const Main: React.FC<Params> = ({ launchCoinRandomly }: Params) => {
   function flipCoin (): void {
     setShow(false)
     setTimeout(() => {
-      setFace(launchCoinRandomly.launch())
+      setFace(flipCoinRandomly.flip())
       setClassAnitmate(styles.animation)
       setTimeout(() => {
         setShow(true)

@@ -1,1 +1,1 @@
-export * from './launch-coin-randomly'
+export * from './flip-coin-randomly'

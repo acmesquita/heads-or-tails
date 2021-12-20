@@ -1,7 +1,7 @@
 import { Result } from '@/domain/models'
-import { LocalLaunchCoinRandomly } from './local-launch-coin-randomly'
+import { LocalFlipCoinRandomly } from './local-flip-coin-randomly'
 
-describe('LocalLaunchCoinRandomly', () => {
+describe('LocalFlipCoinRandomly', () => {
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore()
   })
@@ -9,8 +9,8 @@ describe('LocalLaunchCoinRandomly', () => {
   test('Should return heads if random number less than 0.5', () => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.49)
 
-    const sut = new LocalLaunchCoinRandomly()
-    const result = sut.launch()
+    const sut = new LocalFlipCoinRandomly()
+    const result = sut.flip()
 
     expect((result)).toBe(Result.Heads)
   })
@@ -18,8 +18,8 @@ describe('LocalLaunchCoinRandomly', () => {
   test('Should return tails if random number greater than 0.5', () => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.6)
 
-    const sut = new LocalLaunchCoinRandomly()
-    const result = sut.launch()
+    const sut = new LocalFlipCoinRandomly()
+    const result = sut.flip()
 
     expect((result)).toBe(Result.Tails)
   })
@@ -27,8 +27,8 @@ describe('LocalLaunchCoinRandomly', () => {
   test('Should return tails if random number equal than 0.5', () => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.5)
 
-    const sut = new LocalLaunchCoinRandomly()
-    const result = sut.launch()
+    const sut = new LocalFlipCoinRandomly()
+    const result = sut.flip()
 
     expect((result)).toBe(Result.Tails)
   })

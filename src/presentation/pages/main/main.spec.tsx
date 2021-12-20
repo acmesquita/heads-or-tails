@@ -2,27 +2,27 @@ import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import Main from '.'
 import { Result } from '@/domain/models'
-import { LaunchCoinRandomly } from '@/domain/usecases'
+import { FlipCoinRandomly } from '@/domain/usecases'
 
-class LaunchCoinRandomlyMock implements LaunchCoinRandomly {
+class FlipCoinRandomlyMock implements FlipCoinRandomly {
   output = Result.Heads
   callsCount = 0
-  launch (): Result {
+  flip (): Result {
     this.callsCount++
     return this.output
   }
 }
 
 type SutTypes = {
-  launchCoinRandomlyMock: LaunchCoinRandomlyMock
+  flipCoinRandomlyMock: FlipCoinRandomlyMock
 }
 
 const makeSut = (): SutTypes => {
-  const launchCoinRandomlyMock = new LaunchCoinRandomlyMock()
-  render(<Main launchCoinRandomly={launchCoinRandomlyMock}/>)
+  const flipCoinRandomlyMock = new FlipCoinRandomlyMock()
+  render(<Main flipCoinRandomly={flipCoinRandomlyMock}/>)
 
   return {
-    launchCoinRandomlyMock
+    flipCoinRandomlyMock
   }
 }
 
@@ -40,7 +40,7 @@ describe('Main page', () => {
   })
 
   test('Should be retry when click in button', async () => {
-    const { launchCoinRandomlyMock } = makeSut()
+    const { flipCoinRandomlyMock: launchCoinRandomlyMock } = makeSut()
     await new Promise(resolve => setTimeout(resolve, 200))
 
     expect(launchCoinRandomlyMock.callsCount).toBe(1)
