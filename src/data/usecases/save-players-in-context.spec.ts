@@ -40,4 +40,31 @@ describe('SavePlayersInContext', () => {
     expect(contextSpy.player1).toEqual(player1)
     expect(contextSpy.player2).toEqual(player2)
   })
+
+  test('Should save last values to calls', () => {
+    const { sut, contextSpy } = makeSut()
+    const player1: Player = {
+      name: 'any_name',
+      coinFace: Result.Heads
+    }
+    const player2: Player = {
+      name: 'any_name',
+      coinFace: Result.Tails
+    }
+
+    const player3: Player = {
+      name: 'any_name',
+      coinFace: Result.Heads
+    }
+    const player4: Player = {
+      name: 'any_name',
+      coinFace: Result.Tails
+    }
+
+    sut.save({ player1, player2 })
+    sut.save({ player1: player3, player2: player4 })
+
+    expect(contextSpy.player1).toEqual(player3)
+    expect(contextSpy.player2).toEqual(player4)
+  })
 })
