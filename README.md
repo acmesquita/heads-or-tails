@@ -9,6 +9,7 @@ System to flips the coin.
 
 - [x] Flips the coin when intilize
 - [x] Flips the coin when click in button retry
+- [ ] Enter two names and choose between heads or tails
 
 ## Tecnologis
 
