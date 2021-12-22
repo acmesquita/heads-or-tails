@@ -4,9 +4,9 @@ import { Player } from '@/presentation/pages/register/components'
 
 const Register: React.FC = () => {
   return (
-    <div className={styles.registerWrapper}>
+    <div className={styles.registerWrapper} data-testid="register">
       <h1>Register Players</h1>
-      <form>
+      <form data-testid="form">
         <div className={styles.playersWrapper}>
           <Player id='player1' label='Player 1'/>
           <Player id='player2' label='Player 2'/>

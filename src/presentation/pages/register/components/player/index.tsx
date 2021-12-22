@@ -11,7 +11,7 @@ type Params = {
 
 const Player: React.FC<Params> = ({ id, label }: Params) => {
   return (
-    <div className={styles.playerWrapper}>
+    <div className={styles.playerWrapper} data-testid={id}>
       <label htmlFor={`${id}`}>{label}</label>
       <input type="text" name={`${id}`} autoFocus={id === 'player1'} />
       <div className={styles.facesWrapper}>
